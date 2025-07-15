@@ -3,17 +3,17 @@ import "./App.css";
 import { api } from "./services/api";
 
 function App() {
-  const [repos, setRepos] = useState([]);
+  const [users, setUsers] = useState([]);
   const getData = async () => {
     try {
-      const { data } = await api.get("/repos");
-      setRepos(data);
+      const { data } = await api.get("/users");
+      setUsers(data);
     } catch (error) {
       console.error(error);
     }
   };
 
-  console.log(repos);
+  console.log(users);
 
   useEffect(() => {
     getData();
@@ -21,9 +21,9 @@ function App() {
 
   return (
     <>
-      <h1>Meus Repos GitHub</h1>
-      {repos.map((repo) => (
-        <p key={repo.id}>{repo.name}</p>
+      <h1>Usuários</h1>
+      {users.map((user) => (
+        <p key={user.id}>{user.name}</p>
       ))}
     </>
   );
