@@ -23,7 +23,7 @@ function App() {
     <>
       <h1>Meus Repos GitHub</h1>
       {repos.map((repo) => (
-        <p>{repo.name}</p>
+        <p key={repo.id}>{repo.name}</p>
       ))}
     </>
   );
