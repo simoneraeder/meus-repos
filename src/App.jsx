@@ -13,6 +13,15 @@ function App() {
     }
   };
 
+  const addUser = async () => {
+    const newUser = {
+      name: "Simone",
+      email: "simoneraeder@live.com",
+    };
+    const response = await api.post("users", newUser);
+    setUsers((prev) => [...prev, response.data]);
+  };
+
   console.log(users);
 
   useEffect(() => {
@@ -25,6 +34,7 @@ function App() {
       {users.map((user) => (
         <p key={user.id}>{user.name}</p>
       ))}
+      <button onClick={() => addUser()}>Adicionar usuário</button>
     </>
   );
 }
